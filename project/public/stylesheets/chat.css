@@ -1,0 +1,49 @@
+/* General Styling */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5F5DC;
+    color: #000;
+}
+
+/* Chat Container Styling */
+#chat-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #f2ede9; /* Orange background for the chat container */
+    position: relative;
+}
+
+/* Hide Header */
+h1 {
+    display: none; /* Hide the title to maximize chat area */
+}
+
+/* LiveChat Widget Positioning */
+#chat-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 768px) {
+    #chat-container {
+        padding: 10px;
+    }
+
+    #chat-container iframe {
+        width: 100%;
+        height: 80%;
+    }
+}

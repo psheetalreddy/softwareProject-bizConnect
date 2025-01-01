@@ -1,0 +1,190 @@
+graph api:
+    GET USER INFO
+    EAAYKaLER8BIBO8gRvHg9YzJVLM6O52fZAjmWnQbgBWIvdvZCcI3ZCZAelMDB13RrybxeRg4josMjZACcjUtGC2cXwAT3fWzurFphsGwczPWStQZCgBX7q0ERbuc8cKZB6FE9IsLaM5kHnnNr0ALsP2kUGkGlt6EVbfWhnFTc15ZCyr6KZBXyn1bywMKaxoF2doTXPzgMAh7dfkG4CBvKUp37kmkOAMc7RUv9jeFS0ujE99LofJNZAQYl2xuZAN3WtWiXZAlzTBVZCHAZDZD
+
+    FB.api(
+    '/me',
+    'GET',
+    {"fields":"id,name,email"},
+    function(response) {
+        // Insert your code here
+    }
+    );
+
+    POST COMMENTS:
+    EAAYKaLER8BIBOw6Tp0lo44f03RjZCMbb9X0u6UX7EaZA009MlEviopCvaEn8ZCS3y9pnprwAn4XxpWCLZCMmPcqCkfwzVrVmTn0ZA3A0qGEvv83u0jxjATgnQZBZAMJTWiplj0UakTanxi1QEZC59fckk910dwPLZBxYqldOvatepPPl7ZCJoscKa23P05h70rZAfmWzwd3ehl1d89gwx5VDZAGniTymgbBKsxoV2GpUqlVOm3J70R68w59OmNZCDLbJI
+
+    FB.api(
+    '/POST_ID/comments',
+    'POST',
+    {"message":"Your comment text here","access_token":"YOUR_ACCESS_TOKEN"},
+    function(response) {
+        // Insert your code here
+    }
+    );
+
+    
+        
+
+login api : 
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{your-app-id}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{api-version}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+{
+    status: 'connected',
+    authResponse: {
+        accessToken: '...',
+        expiresIn:'...',
+        signedRequest:'...',
+        userID:'...'
+    }
+}
+
+
+The onlogin attribute on the button to set up a JavaScript callback that checks the login status to see if the person logged in successfully:
+<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
+
+This is the callback. It calls FB.getLoginStatus() to get the most recent login state. (statusChangeCallback() is a function that's part of the example that processes the response.)
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+
+FACEBOOK LOGIN API CODE:-
+
+Step 2: Include the JavaScript SDK on your page once, ideally right after the opening body tag.
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v21.0&appId=1700294623883282"></script>
+
+Step 3: Place this code wherever you want the plugin to appear on your page.
+<div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+
+
+
+
+What is this website about?Tell me about your services.How does this platform work?
+
+
+app.get('/bizzy', (req, res) => {
+    res.render('bizzy', { welcomeMessage: "Hello! Welcome to BizConnect. How can I assist you today?" });
+});
+
+const WIT_SERVER_TOKEN = 'MVVB52F3KTUHJ7JS4QO4M4BRSN6GR4NL';
+
+app.post("/bizzy", async (req, res) => {
+    const userMessage = req.body.message;
+
+    try {
+        const witResponse = await fetch(`https://api.wit.ai/message?v=20230401&q=${encodeURIComponent(userMessage)}`, {
+            headers: {
+                Authorization: `Bearer ${WIT_SERVER_TOKEN}`,
+            },
+        });
+        const witData = await witResponse.json();
+
+        const intent = witData.intents[0]?.name || null;
+        const entities = witData.entities || {};
+
+        let reply;
+        if (intent === "give_ideas" || userMessage.toLowerCase().includes("advertisement ideas") ) {
+            reply = "Here are some ideas for making advertisements for your business: Try engaging storytelling, include customer testimonials, or create promotional offers!";
+        } else if (userMessage.toLowerCase().includes("this website") || userMessage.toLowerCase().includes("about website")) {
+            reply = "Our website connects local businesses with users by allowing businesses to post advertisements, share promotions, and interact through comments and messages.";
+        } else if (userMessage.toLowerCase().includes("hello") || userMessage.toLowerCase().includes("hi")) {
+            reply = "Hello! Welcome to BizConnect. How can I assist you today?";
+        } else if (intent === "advertising_tips" && entities["ad_type"]) {
+            const adType = entities["ad_type"][0].value;
+            reply = `For ${adType} advertisements, focus on visual appeal and clear messaging to attract your target audience.`;
+        } else {
+            reply = "I'm here to help! Feel free to ask questions about our platform or advertising tips.";
+        }
+
+        res.send(reply);
+
+    } catch (error) {
+        console.error("Error communicating with Wit.ai:", error);
+        res.status(500).send("There was an error processing your request.");
+    }
+});
+
+
+
+<!-- Start of LiveChat (www.livechat.com) code -->
+<script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 18812652;
+    window.__lc.integration_name = "manual_onboarding";
+    window.__lc.product_name = "livechat";
+    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+</script>
+<noscript><a href="https://www.livechat.com/chat-with/18812652/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+<!-- End of LiveChat code -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Business Owner</title>
+</head>
+<body>
+    <h1>Chat with {{businessOwner.name}}</h1>
+    <div id="messages">
+        <% messages.forEach(function(message) { %>
+            <div>
+                <strong><%= message.sender.name %>:</strong> <%= message.content %> <em>(<%= message.timestamp.toLocaleString() %>)</em>
+            </div>
+        <% }); %>
+    </div>
+    <input type="text" id="messageInput" placeholder="Type your message...">
+    <button id="sendMessage">Send</button>
+
+    <script>
+        const sendMessageButton = document.getElementById('sendMessage');
+        sendMessageButton.addEventListener('click', () => {
+            const message = document.getElementById('messageInput').value;
+            fetch('/send-message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    receiverId: '{{businessOwner.id}}', // ID of the business owner
+                    content: message,
+                }),
+            }).then(response => response.json()).then(data => {
+                // Clear input and update message list
+                document.getElementById('messageInput').value = '';
+                // Optionally fetch updated messages or refresh the list
+            });
+        });
+    </script>
+</body>
+</html>

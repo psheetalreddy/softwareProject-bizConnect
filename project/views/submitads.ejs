@@ -1,0 +1,62 @@
+<!-- views/submitads.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Ad</title>
+    <link href="/stylesheets/submitads.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logoDiv">
+            <img class="logoImg" src="/images/logo1.png">
+            <div class="logo">BizConnect</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <form action="/submitads" method="POST" enctype="multipart/form-data">
+        <h1><b>Submit Your Business Ad</b></h1>
+        <div>
+            <label for="businessName">Business Name:</label>
+            <input type="text" id="businessName" name="businessName" required>
+        </div>
+        <div>
+            <label for="description">Ad Description:</label>
+            <textarea id="description" name="description" required></textarea>
+        </div>
+        <div>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+        </div>
+        <div>
+            <label for="businessType">Business Type:</label>
+            <input type="text" id="businessType" name="businessType" required>
+        </div>
+        <div>
+            <label for="contactInfo">Contact Info:</label>
+            <input type="text" id="contactInfo" name="contactInfo" required>
+        </div>
+        <div>
+            <label for="facebookLink">Facebook Link:</label>
+            <input type="url" id="facebookLink" name="facebookLink">
+        </div>
+        <div>
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+        </div>
+        <div>
+            <button type="submit">Submit Ad</button>
+        </div>
+        <a href="/landing">Back to home Page</a>
+    </form>
+    
+</body>
+</html>

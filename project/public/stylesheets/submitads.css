@@ -1,0 +1,124 @@
+/* General Styles */
+body {
+    font-family: "PT Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #F5F5DC;
+    color: #000000;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FF8225;
+    color: #F5F5DC;
+    padding: 10px 20px;
+}
+
+header .logoDiv {
+    display: flex;
+    align-items: center;
+}
+
+header .logoImg {
+    width: 55px;
+    height: 45px;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #F5F5DC;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* Form Container Styling */
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: black;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #F5F5DC;
+    font-weight: bold;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #F5F5DC;
+}
+
+form input[type="text"],
+form input[type="url"],
+form input[type="file"],
+form textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #F5F5DC;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+form button {
+    width: 95%;
+    padding: 10px;
+    background-color: #ff6600;
+    color: #F5F5DC;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #e55b00;
+}
+
+/* Back Link Styling */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #000000;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #000000ea;
+    color: #F5F5DC;
+    text-align: center;
+    padding: 5px;
+    font-size: 18px;
+}
+
+footer a {
+    color: #F5F5DC;
+    text-decoration: none;
+}

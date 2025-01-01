@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Ads</title>
+    <link rel="stylesheet" href="/stylesheets/landing.css">
+</head>
+<body>
+    <header>
+        <div class="logoDiv">
+            <img class="logoImg" src="/images/logo1.png">
+            <div class="logo">BizConnect</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class = "heading">
+        <h1>Welcome, <%= username %>!</h1>
+        <h2>All Business Ads</h2>
+    </div>
+    <div class="ads-container">
+        <!-- Loop through each ad -->
+        <% ads.forEach(ad => { %>
+            <div class="ad">
+                <h3><%= ad.businessName %></h3>
+                <p><strong>Location:</strong> <%= ad.location %></p>
+                <p><strong>Type:</strong> <%= ad.businessType %></p>
+                <p><%= ad.description %></p>
+                <p><strong>Contact:</strong> <%= ad.contactInfo %></p>
+                <!-- Show image if available -->
+                <% if (ad.image) { %>
+                    <img src="<%= ad.image %>" alt="<%= ad.businessName %> Ad" class="ad-image">
+                <% } %>
+                <p><a href="<%= ad.facebookLink %>" target="_blank">View on Facebook</a></p>
+                <p><a href="/chat">Chat</a></p>
+                
+                <!-- Show Delete button for ad owner -->
+                <% if (ad.ownerId === userId) { %>
+                    <form action="/ads/<%= ad._id %>" method="POST" class="delete-form">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this ad?');">Delete</button>
+                    </form>
+                <% } %> 
+            </div>
+        <% }) %>
+    </div>
+
+    <!-- Floating Bizzy Chat Icon -->
+    <div class="floating-chat" onclick="window.location.href='/bizzy';">
+        <span class="chat-icon">💬</span>
+        <span class="chat-text">Bizzy</span>
+    </div>
+
+    <footer>
+        <a href="/submitads">Submit New Ad</a>
+        <form action="/logout" method="POST" class="logout-form">
+            <button type="submit">Logout</button>
+        </form>
+    </footer>
+</body>
+</html>

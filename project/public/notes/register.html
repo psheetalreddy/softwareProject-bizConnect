@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - Local Business Advertising</title>
+        <link rel="stylesheet" href="/stylesheets/login.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="login.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="logoDiv">
+                <img class="logoImg" src="logo1.png">
+                <div class="logo">BizConnect</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <div class="form-container" id="registration-container">
+            <h2>SignUp</h2>
+            <!-- Corrected Form Opening -->
+            <form action="/register" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="reg-username" name="username" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="reg-email" name="email" required><br>
+
+                <label for="password">Password:</label>
+                <input type="password" id="reg-password" name="password" required><br>
+
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="reg-password1" name="confirmPassword" required><br>
+
+                <!-- Button inside form -->
+                <button type="submit">Register</button>
+
+            </form>
+
+            <div class = "fbOAuth">
+                <div id="fb-root"></div>
+            
+                <fb:login-button 
+                  scope="public_profile,email"
+                  onlogin="checkLoginState();"
+                  data-width=""
+                  data-size="large"
+                  data-button-type="login_with"
+                  data-layout="default"
+                  data-auto-logout-link="false"
+                  data-use-continue-as="true">
+                </fb:login-button>
+              
+                <div id="user-info"></div>
+              </div>
+
+            <p style="text-align: center; color: #F5F5DC;">Already have an account? <a href="/login" style="color: #ff6600;">Login</a></p>
+            <a href="/" style="color: #ff6600;" class="back-link">Back to Home Page</a>
+        </div>
+        <script>
+            window.fbAsyncInit = function() {
+              FB.init({
+                appId      : '1700294623883282', // Your Facebook App ID
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v21.0' // API version
+              });
+              
+              FB.AppEvents.logPageView();   
+            };
+        
+            function checkLoginState() {
+              FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+              });
+            }
+        
+            function statusChangeCallback(response) {
+              if (response.status === 'connected') {
+                window.location.href = "/landing";
+                console.log('Successfully logged in with Facebook:', response);
+                getFacebookUserInfo();
+              } else {
+                console.log('User not authenticated');
+              }
+            }
+        
+            function getFacebookUserInfo() {
+              FB.api('/me', {fields: 'id,name,email'}, function(response) {
+                console.log('User Info:', response);
+                document.getElementById('user-info').innerText = `Hello, ${response.name}`;
+              });
+            }
+          </script>
+          <script async defer crossorigin="anonymous" 
+          src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v21.0&appId=1700294623883282"></script>
+    </body>
+</html>

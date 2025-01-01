@@ -1,0 +1,214 @@
+/* General Body Styling */
+body {
+    font-family: "PT Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #F5F5DC;
+    color: #000000;
+    padding-top: 80px; /* To ensure content isn't hidden behind the fixed header */
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FF8225;
+    color: #F5F5DC;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+/* Logo Styling */
+header .logoDiv {
+    display: flex;
+    align-items: center;
+}
+
+header .logoImg {
+    width: 55px;
+    height: 45px;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Navigation Styling */
+nav {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #F5F5DC;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 5px 10px;
+}
+
+/* Hover Effect for Navigation Links */
+nav ul li a:hover {
+    background-color: #F5A623;
+    border-radius: 5px;
+}
+
+/* Main Content Styling */
+header + .content {
+    padding: 20px;
+}
+
+/* Ads Layout */
+.ads-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-top: 100px; /* Adjusted to account for fixed header */
+}
+
+.ad {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ad h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.ad p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.ad img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.ad a {
+    color: #FF8225;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.ad a:hover {
+    text-decoration: underline;
+}
+
+.delete-form {
+    display: inline;
+}
+
+.delete-btn {
+    background-color: #FF8225;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #e67220;
+}
+
+/* Floating Bizzy Chat Icon */
+.floating-chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #FF8225;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.floating-chat:hover {
+    transform: scale(1.1);
+}
+
+.chat-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.chat-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #000000ea;
+    color: #F5F5DC;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+}
+
+footer a {
+    color: #F5F5DC;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.logout-form {
+    display: inline;
+}
+
+.logout-form button {
+    background-color: #FF8225;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-form button:hover {
+    background-color: #e67220;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .ads-container {
+        grid-template-columns: 1fr;
+    }
+}
