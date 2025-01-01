@@ -26,7 +26,7 @@ app.use(session({
     saveUninitialized: true
 }));
 
-mongoose.connect('mongodb://localhost:27017/userAuthDB', {
+mongoose.connect('mongodb://127.0.0.1:27017/userAuthDB', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
